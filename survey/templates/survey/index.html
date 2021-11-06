@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'survey/style.css' %}">
+</head>
+<body>
+{% if latest_question_list %}
+<div class="list_question">
+    <ul>
+    {% for question in latest_question_list %}
+     <li><a href="{% url 'survey:detail' question.id %}">{{ question.question_text }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Немає доступних питань.</p>
+{% endif %}
+</div>
+</body>
+</html>
